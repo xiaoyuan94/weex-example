@@ -112,6 +112,14 @@ public abstract class BaseActivity extends AppCompatActivity implements IWXRende
         if (renderType == RENDER_TYPE_NETWORK) {
             mWXSDKInstance.renderByUrl(pageName, jsUrl, options, null, WXRenderStrategy.APPEND_ONCE);
         } else if (renderType == RENDER_TYPE_LOCAL) {
+            /**
+             * WXSample 可以替换成自定义的字符串，针对埋点有效。
+             * template 是.we transform 后的 js文件。
+             * option 可以为空，或者通过option传入 js需要的参数。例如bundle js的地址等。
+             * jsonInitData 可以为空。
+             * width 为-1 默认全屏，可以自己定制。
+             * height =-1 默认全屏，可以自己定制。
+             */
             mWXSDKInstance.render(pageName, WXFileUtils.loadAsset(jsName, mContext), null, null, WXRenderStrategy.APPEND_ASYNC);
         }
         /*flag:渲染策略。WXRenderStrategy.APPEND_ASYNC:异步策略先返回外层View，

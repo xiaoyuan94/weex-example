@@ -29,6 +29,7 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.5.2'
 
     implementation 'com.alibaba:fastjson:1.2.6'
-    implementation 'com.taobao.android:weex_sdk:0.17.0@aar'
-    implementation 'com.taobao.android:weex_inspector:0.13.4'
+    implementation 'com.taobao.android:weex_sdk:0.19.0.7@aar'
+    //浏览器联调
+//    implementation 'com.taobao.android:weex_inspector:0.22.0.5'
 }
