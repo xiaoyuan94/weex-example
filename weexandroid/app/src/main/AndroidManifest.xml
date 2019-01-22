@@ -26,11 +26,13 @@
         <activity android:name=".activity.NetworkActivity" />
         <activity
             android:name=".fragment.WXFragmentActivity"
-            android:label="@string/title_activity_fragment" />
+            android:label="@string/title_activity_fragment"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.MultiInstanceActivity" />
         <activity
             android:name=".activity.MessageActivity"
-            android:label="@string/title_activity_communication" />
+            android:label="@string/title_activity_communication"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".activity.GuideActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
