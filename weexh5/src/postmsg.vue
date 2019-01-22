@@ -1,7 +1,11 @@
 <template>
   <div class="wrapper" @longpress="onlongpress">
-    <text class="title" @click="onlongpress"  @appear="onappear('B')"
-        @disappear="ondisappear('B')">点我，page2,  {{test}}</text>
+    <text
+      class="title"
+      @click="onlongpress"
+      @appear="onappear('B')"
+      @disappear="ondisappear('B')"
+    >点我，page2, {{test}}</text>
     <button class="btn" @click="testEvent">测试调用同一个modal</button>
   </div>
 </template>
@@ -12,7 +16,7 @@ var modal = weex.requireModule("modal");
 
 var globalEvent = weex.requireModule("globalEvent");
 globalEvent.addEventListener("eventB", function(e) {
-  console.log("get eventB"+e.data);
+  console.log("get eventB" + e.data);
   modal.toast({
     message: "globalEvent收到了eventB " + e.data,
     duration: 1
@@ -32,10 +36,16 @@ module.exports = {
     bc.onmessage = function(event) {
       //bc.onmessage = event => {
       console.log(event.data); // send message from weex pageA
-      that.test = "pageB received ="+event.data;
+      that.test = "pageB received =" + event.data;
       //this.test = "pageB received ="+event.data;
       modal.toast({
-        message: "onmessage received =" + event.data+",user="+event.user.name+","+event.user.age,
+        message:
+          "onmessage received =" +
+          event.data +
+          ",user=" +
+          event.user.name +
+          "," +
+          event.user.age,
         duration: 1
       });
     };
@@ -47,28 +57,34 @@ module.exports = {
   methods: {
     testEvent: function() {
       //myMoudle.sendMessage("pageB调用了native方法");
-      this.test = "pageB clicked";      
+      this.test = "pageB clicked";
       myMoudle.printLog("myMoudle from B");
     },
-    onlongpress (event) {
-        console.log('onlongpress:', event)
-        myMoudle.fireNativeGlobalEvent("eventB",function (event) {
-           console.log("received From Natvie "+event.data)
-           modal.toast({
-             message: 'native callback.invoke = '+event.result +",user="+event.user.name+","+event.user.age,
-             duration: 2
-           });
+    onlongpress(event) {
+      console.log("onlongpress:", event);
+      myMoudle.fireNativeGlobalEvent("eventB", function(event) {
+        console.log("received From Natvie " + event.data);
+        modal.toast({
+          message:
+            "native callback.invoke = " +
+            event.result +
+            ",user=" +
+            event.user.name +
+            "," +
+            event.user.age,
+          duration: 2
         });
-      },
-      onappear (char) {
-        console.log(char, 'appear')
-        modal.toast({ message: char + ' appear' })
-        //this.test = "pageB change text";
-      },
-      ondisappear (char) {
-        console.log(char, 'disappear')
-        modal.toast({ message: char + ' disappear' })
-      }
+      });
+    },
+    onappear(char) {
+      console.log(char, "appear");
+      modal.toast({ message: char + " appear" });
+      //this.test = "pageB change text";
+    },
+    ondisappear(char) {
+      console.log(char, "disappear");
+      modal.toast({ message: char + " disappear" });
+    }
   }
 };
 </script>
