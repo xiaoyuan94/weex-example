@@ -1,0 +1,6 @@
+{
+  "AppName":"WeexApp",
+  "AppId":"site.duqian.weex",
+  "SplashText":"Hello\nWeex",
+  "WeexBundle":"index.js"
+}
